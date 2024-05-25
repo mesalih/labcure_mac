@@ -1,0 +1,329 @@
+[
+    {
+        "label": "Biochemistry",
+        "tests": [
+            {
+                "id": "AGR",
+                "label": "A:G Ratio",
+                "rate": "",
+                "unit": ""
+            },
+            {
+                "id": "ACP",
+                "label": "Acid Phosphatase",
+                "rate": "",
+                "unit": "U/L"
+            },
+            {
+                "id": "ALB",
+                "label": "Albumin",
+                "rate": "",
+                "unit": "g/dL"
+            },
+            {
+                "id": "BIC",
+                "label": "Bicarbonate",
+                "rate": "",
+                "unit": "mEq/L"
+            },
+            {
+                "id": "BSF",
+                "label": "Blood Sugar (F)",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "BSP",
+                "label": "Blood Sugar (PP)",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "BSR",
+                "label": "Blood Sugar (R)",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "BU",
+                "label": "Blood Urea",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "BUN",
+                "label": "B.U.N",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "CPK",
+                "label": "C.P.K",
+                "rate": "",
+                "unit": "U/L"
+            },
+            {
+                "id": "CKM",
+                "label": "C.K.MB",
+                "rate": "",
+                "unit": "U/L"
+            },
+            {
+                "id": "CHL",
+                "label": "Chloride",
+                "rate": "",
+                "unit": "mEq/L"
+            },
+            {
+                "id": "CHOL",
+                "label": "Cholesterol",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "GGT",
+                "label": "G.G.T.P",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "GLO",
+                "label": "Globumin",
+                "rate": "",
+                "unit": "g/dL"
+            },
+            {
+                "id": "HDL",
+                "label": "HDL Cholesterol",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "LDH",
+                "label": "L.D.H",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "PL",
+                "label": "Phospholipids",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "SBT",
+                "label": "S.Bilirubin (Total)",
+                "rate": "",
+                "unit": ""
+            },
+            {
+                "id": "SBD",
+                "label": "S.Bilirubin (Direct)",
+                "rate": "",
+                "unit": ""
+            },
+            {
+                "id": "SBI",
+                "label": "S.Bilirubin (Indirect)",
+                "rate": "",
+                "unit": ""
+            },
+            {
+                "id": "USF",
+                "label": "Urine Sugar (F)",
+                "rate": "",
+                "unit": ""
+            },
+            {
+                "id": "USP",
+                "label": "Urine Sugar (PP)",
+                "rate": "",
+                "unit": ""
+            },
+            {
+                "id": "SGO",
+                "label": "S.G.O.T",
+                "rate": "",
+                "unit": ""
+            }
+        ]
+    },
+    {
+        "label": "Hematology",
+        "tests": [
+            {
+                "id": "HB",
+                "label": "Hemoglobin",
+                "rate": "",
+                "unit": "gm%"
+            },
+            {
+                "id": "TLC",
+                "label": "Total Leucocyte Count",
+                "rate": "",
+                "unit": "cell/cmm"
+            },
+            {
+                "id": "DLC",
+                "label": "D.L.C",
+                "rate": "",
+                "unit": "million/mcL"
+            }
+        ]
+    },
+    {
+        "label": "Liver Function",
+        "tests": [
+            {
+                "id": "BRNT",
+                "label": "S. Bilirubin (Total)",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "BRND",
+                "label": "S. Bilirubin (Direct)",
+                "rate": "",
+                "unit": "mg/dL"
+            },
+            {
+                "id": "BRNI",
+                "label": "S. Bilirubin (Indirect)",
+                "rate": "",
+                "unit": "mg/dL"
+            }
+        ]
+    },
+    {
+        "label": "Urine Examination",
+        "tests": [
+            {
+                "id": "078",
+                "label": "Routine Urinalysis",
+                "rate": "",
+                "unit": "mL"
+            }
+        ]
+    },
+    {
+        "label": "Serology",
+        "tests": [
+            {
+                "id": "HCV",
+                "label": "Anti HCV Antibodies",
+                "rate": "",
+                "unit": ""
+            }
+        ]
+    },
+    {
+        "label": "Urine Chemistry",
+        "tests": [
+            {
+                "id": "103",
+                "label": "24 Hours Urine Volume",
+                "rate": "",
+                "unit": "mL"
+            }
+        ]
+    },
+    {
+        "label": "Stool",
+        "tests": [
+            {
+                "id": "163",
+                "label": "Macroscopic Examination",
+                "rate": "",
+                "unit": ""
+            }
+        ]
+    },
+    {
+        "label": "Lipid Profile",
+        "tests": [
+            {
+                "id": "155",
+                "label": "Serum Cholesterol",
+                "rate": "",
+                "unit": "mg/dL"
+            }
+        ]
+    },
+    {
+        "label": "Hormone Assay",
+        "tests": [
+            {
+                "id": "232",
+                "label": "Beta HCG",
+                "rate": "",
+                "unit": "mU/mL"
+            }
+        ]
+    },
+    {
+        "label": "Histopathology",
+        "tests": [
+            {
+                "id": "230",
+                "label": "Biopsy Small",
+                "rate": "",
+                "unit": ""
+            }
+        ]
+    },
+    {
+        "label": "Torch Profile",
+        "tests": [
+            {
+                "id": "074",
+                "label": "IgM to Toxoplasma [Elisa]",
+                "rate": "",
+                "unit": "EU/mL"
+            }
+        ]
+    },
+    {
+        "label": "Semen Analysis",
+        "tests": [
+            {
+                "id": "CT1",
+                "label": "Collection Time",
+                "rate": "",
+                "unit": ""
+            }
+        ]
+    },
+    {
+        "label": "Microbiology",
+        "tests": [
+            {
+                "id": "269",
+                "label": "Z.N. Staining For AFB",
+                "rate": "",
+                "unit": ""
+            }
+        ]
+    },
+    {
+        "label": "Culture Report",
+        "tests": [
+            {
+                "id": "289",
+                "label": "Sample Receipt Date",
+                "rate": "",
+                "unit": ""
+            }
+        ]
+    },
+    {
+        "label": "Liver Aspirate",
+        "tests": [
+            {
+                "id": "035",
+                "label": "Macroscopic Examination",
+                "rate": "",
+                "unit": ""
+            }
+        ]
+    }
+]
