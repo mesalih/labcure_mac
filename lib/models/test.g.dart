@@ -8,7 +8,7 @@ part of 'test.dart';
 
 class TestAdapter extends TypeAdapter<Test> {
   @override
-  final int typeId = 2;
+  final int typeId = 1;
 
   @override
   Test read(BinaryReader reader) {

@@ -106,14 +106,11 @@ class _PatientCreationState extends State<PatientCreation> {
     Size size = MediaQuery.sizeOf(context);
     AppBarTheme style = Theme.of(context).appBarTheme;
     ColorScheme colors = Theme.of(context).colorScheme;
-    IconThemeData iconTheme = Theme.of(context).iconTheme;
 
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        titleSpacing: padding,
         title: const Text('New Patient'),
-        iconTheme: iconTheme.copyWith(size: 20.0),
         actions: [
           Text(pid, style: style.titleTextStyle),
           const Gap(padding),
@@ -121,9 +118,10 @@ class _PatientCreationState extends State<PatientCreation> {
           const Gap(padding),
         ],
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(48),
+          preferredSize: const Size.fromHeight(kTextTabBarHeight + gap / 1.2),
           child: Container(
             padding: const EdgeInsets.all(gap / 1.2),
+            margin: const EdgeInsets.only(bottom: gap / 1.2),
             constraints: const BoxConstraints(maxHeight: kTextTabBarHeight, maxWidth: 300),
             decoration: BoxDecoration(
               color: colors.surfaceContainer.withOpacity(0.5),
@@ -140,12 +138,12 @@ class _PatientCreationState extends State<PatientCreation> {
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: padding),
+        padding: const EdgeInsets.symmetric(horizontal: padding, vertical: padding),
         child: Center(
           child: Container(
             constraints: BoxConstraints(
               maxWidth: size.width / 2.2,
-              minHeight: size.height - (toolbarHeight + kTextTabBarHeight),
+              minHeight: size.height - (toolbarHeight + kTextTabBarHeight + padding * 2),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

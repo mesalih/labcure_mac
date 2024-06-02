@@ -3,7 +3,7 @@ import 'package:labcure/models/test.dart';
 
 part 'group.g.dart';
 
-@HiveType(typeId: 3)
+@HiveType(typeId: 2)
 class Group {
   const Group({required this.id, required this.label, required this.tests});
 

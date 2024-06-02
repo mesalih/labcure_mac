@@ -3,6 +3,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:labcure/models/catalog.dart';
+import 'package:labcure/models/group.dart';
 import 'package:labcure/models/patient.dart';
 import 'package:labcure/models/test.dart';
 import 'package:labcure/services/hive_services.dart';
@@ -62,6 +63,7 @@ class HiveFunctions {
     required String name,
     required String age,
     required String gender,
+    required String admissionDate,
     required List<Test> tests,
   }) {
     Patient patient = Patient(
@@ -71,20 +73,21 @@ class HiveFunctions {
       name: name,
       age: age,
       gender: gender,
+      admissionDate: admissionDate,
       tests: tests,
     );
     patientbox.put(uid, patient);
   }
 
   void updateTest({
-    required String key,
+    required String uid,
     required int index,
     required String id,
     required String label,
     required String rate,
     required String unit,
   }) {
-    Catalog? catalog = catalogbox.get(key);
+    Catalog? catalog = catalogbox.get(uid);
     Test test = Test(
       id: id,
       label: label,
@@ -92,6 +95,19 @@ class HiveFunctions {
       unit: unit,
     );
     catalog!.tests![index] = test;
+    catalogbox.put(catalog.uid, catalog);
+  }
+
+  void submitTest({required String uid, required Test test}) {
+    Catalog catalog = catalogbox.get(uid)!;
+    catalog.tests!.add(test);
+    catalogbox.put(uid, catalog);
+  }
+
+  void submitGroup({required String uid, required String id, required String label, required List<Test> tests}) {
+    Catalog catalog = catalogbox.get(uid)!;
+    Group group = Group(id: id, label: label, tests: tests);
+    catalog.groups!.add(group);
     catalogbox.put(catalog.uid, catalog);
   }
 }

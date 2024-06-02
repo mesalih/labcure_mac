@@ -41,7 +41,7 @@ class _PatientViewState extends State<PatientView> {
               title: Text('${patient.title} ${patient.name}'),
               actions: [
                 IconButton(
-                  onPressed: () => context.push(RoutePath.patientedit.path, extra: patient),
+                  onPressed: () => context.push(Paths.patientedit.path, extra: patient),
                   icon: const Icon(Icons.edit_rounded),
                 ),
                 const Gap(gap),
@@ -75,7 +75,7 @@ class _PatientViewState extends State<PatientView> {
                           borderRadius: Borders.borderRadius,
                         ),
                         header: Text(
-                          'Status',
+                          'STATUS',
                           style: texts.labelMedium!.copyWith(color: colors.onSurfaceVariant.withOpacity(0.5)),
                         ),
                         children: [
@@ -109,7 +109,7 @@ class _PatientViewState extends State<PatientView> {
                               patient.tested = !patient.tested;
                               if (patient.postpone) patient.postpone = !patient.postpone;
                               setting(patient);
-                              context.go(RoutePath.patientview.path, extra: null);
+                              context.go(Paths.patientview.path, extra: null);
                             }),
                             title: Text('Complate', style: texts.labelSmall),
                             trailing: Visibility(
@@ -135,7 +135,7 @@ class _PatientViewState extends State<PatientView> {
                               builder: (context) {
                                 return DeleteDialog(
                                   onAcepted: () => Hiveservices.instance.patientbox.delete(patient.uid).then(
-                                        (_) => context.go(RoutePath.patientview.path),
+                                        (_) => context.go(Paths.patientview.path),
                                       ),
                                   text: patient.name,
                                 );

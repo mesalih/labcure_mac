@@ -61,11 +61,12 @@ class _PatientEditState extends State<PatientEdit> {
 
       HiveFunctions().updatePatient(
         uid: patient.uid,
-        pid: patient.uid,
+        pid: patient.pid,
         title: controllers[0].text.trim(),
         name: controllers[1].text.trim(),
         age: age,
         gender: controllers[5].text.trim(),
+        admissionDate: patient.admissionDate!,
         tests: tests,
       );
       context.pop();
@@ -118,9 +119,10 @@ class _PatientEditState extends State<PatientEdit> {
           const Gap(padding),
         ],
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(48),
+          preferredSize: const Size.fromHeight(kTextTabBarHeight + gap / 1.2),
           child: Container(
             padding: const EdgeInsets.all(gap / 1.2),
+            margin: const EdgeInsets.only(bottom: gap / 1.2),
             constraints: const BoxConstraints(maxHeight: kTextTabBarHeight, maxWidth: 300),
             decoration: BoxDecoration(
               color: colors.surfaceContainer.withOpacity(0.5),
@@ -141,12 +143,12 @@ class _PatientEditState extends State<PatientEdit> {
           child: Container(
             constraints: BoxConstraints(
               maxWidth: size.width / 2.2,
-              minHeight: size.height - (toolbarHeight + kTextTabBarHeight + padding * 3),
+              minHeight: size.height - (toolbarHeight + kTextTabBarHeight + 80 + padding),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Gap(padding),
+                const Gap(40),
                 pages[step],
                 const Gap(padding),
                 Row(
@@ -179,7 +181,7 @@ class _PatientEditState extends State<PatientEdit> {
                     ),
                   ],
                 ),
-                const Gap(padding)
+                const Gap(40)
               ],
             ),
           ),

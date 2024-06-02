@@ -8,6 +8,7 @@ import 'package:labcure/config/styles/borders.dart';
 import 'package:labcure/config/styles/constants.dart';
 import 'package:labcure/models/catalog.dart';
 import 'package:labcure/services/hive_services.dart';
+import 'package:labcure/widgets/delete_dialog.dart';
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});
@@ -44,19 +45,22 @@ class _CatalogPageState extends State<CatalogPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
     IconThemeData iconTheme = Theme.of(context).iconTheme;
+    ColorScheme colors = Theme.of(context).colorScheme;
+    TextTheme texts = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
-        actionsIconTheme: iconTheme.copyWith(size: 20.0),
+        centerTitle: true,
+        leadingWidth: 110,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Catalogs'),
+            ConstrainedBox(constraints: const BoxConstraints(minWidth: 100), child: const Text('Catalogs')),
             SearchBar(
               controller: search,
               onChanged: (_) => setState(() {}),
-              constraints: const BoxConstraints.tightFor(width: 300, height: height),
+              constraints: const BoxConstraints.tightFor(width: 450, height: height),
               hintText: 'Search',
+              leading: const Icon(CupertinoIcons.search),
               trailing: [
                 Visibility(
                   visible: search.text.isNotEmpty,
@@ -70,13 +74,15 @@ class _CatalogPageState extends State<CatalogPage> {
                 const Gap(gap),
               ],
             ),
-            const SizedBox.shrink(),
+            ConstrainedBox(
+              constraints: const BoxConstraints(minWidth: 100),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(onPressed: () {}, icon: const Icon(CupertinoIcons.add)),
+              ),
+            ),
           ],
         ),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(CupertinoIcons.add)),
-          const Gap(padding),
-        ],
       ),
       body: ValueListenableBuilder(
         valueListenable: Hiveservices.instance.catalogbox.listenable(),
@@ -85,20 +91,31 @@ class _CatalogPageState extends State<CatalogPage> {
             child: Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: size.width > 1024 ? 1024 : size.width),
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(padding),
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 260,
-                    mainAxisSpacing: gap,
-                    crossAxisSpacing: gap,
-                  ),
-                  itemCount: filter(box).length,
-                  itemBuilder: (context, index) {
-                    Catalog c = filter(box).elementAt(index);
-                    return _CatalogTile(catalog: c);
-                  },
+                child: Column(
+                  children: [
+                    const Gap(40),
+                    Text(
+                      'Your library has ${box.length} ${box.length > 1 ? 'catalogs' : 'catalog'}',
+                      style: texts.displayMedium!.copyWith(color: colors.primary),
+                    ),
+                    const Gap(40),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.all(padding),
+                      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 260,
+                        mainAxisSpacing: gap,
+                        crossAxisSpacing: gap,
+                      ),
+                      itemCount: filter(box).length,
+                      itemBuilder: (context, index) {
+                        Catalog c = filter(box).elementAt(index);
+                        return _CatalogTile(catalog: c);
+                      },
+                    ),
+                    const Gap(40),
+                  ],
                 ),
               ),
             ),
@@ -127,7 +144,7 @@ class _CatalogTileState extends State<_CatalogTile> {
       onEnter: (_) => setState(() => hovering = true),
       onExit: (_) => setState(() => hovering = false),
       child: GestureDetector(
-        onTap: () => context.push(RoutePath.catalogview.path, extra: widget.catalog),
+        onTap: () => context.push(Paths.catalogview.path, extra: widget.catalog.uid),
         child: AnimatedContainer(
           duration: Durations.medium1,
           decoration: BoxDecoration(
@@ -135,54 +152,35 @@ class _CatalogTileState extends State<_CatalogTile> {
             borderRadius: Borders.borderRadius,
             border: hovering ? Border.all(color: colors.primary) : null,
           ),
-          alignment: Alignment.center,
-          child: Text(widget.catalog.label, style: texts.labelMedium),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Text(widget.catalog.label, style: texts.labelMedium),
+              Visibility(
+                visible: hovering,
+                child: Positioned(
+                  left: gap,
+                  right: gap,
+                  bottom: gap,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () => showAdaptiveDialog(
+                          context: context,
+                          builder: (context) => DeleteDialog(onAcepted: () {}, text: widget.catalog.label),
+                        ),
+                        icon: const Icon(Icons.delete_rounded),
+                      ),
+                      IconButton(onPressed: () {}, icon: const Icon(Icons.edit_rounded)),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
-
-/*
-
-
-Wrap(
-                  spacing: gap,
-                  runSpacing: gap,
-                  children: List.generate(box.length, (index) {
-                    Catalog c = box.getAt(index)!;
-                    return Container(
-                      constraints: const BoxConstraints.expand(width: 260, height: 260),
-                      decoration: BoxDecoration(
-                        color: colors.surfaceContainer.withOpacity(0.5),
-                        borderRadius: Borders.borderRadius,
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(c.label, style: texts.labelMedium),
-                    );
-                  }),
-                ),
-
-GridView.builder(
-                padding: const EdgeInsets.all(padding),
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 260,
-                  mainAxisSpacing: gap,
-                  crossAxisSpacing: gap,
-                ),
-                itemCount: box.length,
-                itemBuilder: (context, index) {
-                  Catalog c = box.getAt(index)!;
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: colors.surfaceContainer.withOpacity(0.5),
-                      borderRadius: Borders.borderRadius,
-                    ),
-                    alignment: Alignment.center,
-                    child: Text(c.label, style: texts.labelMedium),
-                  );
-                },
-              ),
-
- */

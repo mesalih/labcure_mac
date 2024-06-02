@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:labcure/models/catalog.dart';
+import 'package:labcure/models/group.dart';
 import 'package:labcure/models/patient.dart';
 import 'package:labcure/models/test.dart';
 import 'package:labcure/services/hive_services.dart';
@@ -20,6 +21,7 @@ class HiveInitializer {
   static void registerAdapters() {
     Hive.registerAdapter(PatientAdapter());
     Hive.registerAdapter(TestAdapter());
+    Hive.registerAdapter(GroupAdapter());
     Hive.registerAdapter(CatalogAdapter());
   }
 
@@ -37,6 +39,7 @@ class HiveInitializer {
           tests: (data['tests'] as List<dynamic>).map((test) {
             return Test(id: test['id'], label: test['label'], rate: test['rate'], unit: test['unit']);
           }).toList(),
+          groups: [],
         );
 
         await catalogbox.put(catalog.uid, catalog);

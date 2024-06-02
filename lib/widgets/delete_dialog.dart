@@ -69,7 +69,9 @@ class DeleteDialog extends StatelessWidget {
                   shape: WidgetStateProperty.resolveWith((states) {
                     if (states.contains(WidgetState.focused)) {
                       return RoundedRectangleBorder(
-                          side: BorderSide(color: colors.inverseSurface, width: 2), borderRadius: Borders.borderRadius);
+                        side: BorderSide(color: colors.inverseSurface, width: 2),
+                        borderRadius: Borders.borderRadius,
+                      );
                     }
                     return null;
                   }),

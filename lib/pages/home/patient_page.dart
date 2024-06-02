@@ -38,7 +38,7 @@ class _PatientPageState extends State<PatientPage> {
             child: Column(
               children: [
                 ConstrainedBox(
-                  constraints: const BoxConstraints(maxHeight: kToolbarHeight + padding + height),
+                  constraints: const BoxConstraints(maxHeight: toolbarHeight + kTextTabBarHeight),
                   child: AppBar(
                     centerTitle: false,
                     forceMaterialTransparency: true,
@@ -58,8 +58,8 @@ class _PatientPageState extends State<PatientPage> {
                       const Gap(gap),
                       IconButton(
                         onPressed: () {
-                          if (GoRouterState.of(context).uri.path != RoutePath.patientcreation.path) {
-                            context.push(RoutePath.patientcreation.path);
+                          if (GoRouterState.of(context).uri.path != Paths.patientcreation.path) {
+                            context.push(Paths.patientcreation.path);
                           }
                         },
                         icon: const Icon(CupertinoIcons.add),
@@ -72,6 +72,7 @@ class _PatientPageState extends State<PatientPage> {
                         padding: const EdgeInsets.symmetric(horizontal: padding),
                         child: SearchBar(
                           controller: search,
+                          leading: const Icon(CupertinoIcons.search),
                           hintText: 'Search',
                           onChanged: (_) => setState(() {}),
                           trailing: [

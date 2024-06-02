@@ -8,7 +8,7 @@ part of 'catalog.dart';
 
 class CatalogAdapter extends TypeAdapter<Catalog> {
   @override
-  final int typeId = 1;
+  final int typeId = 3;
 
   @override
   Catalog read(BinaryReader reader) {
@@ -43,8 +43,5 @@ class CatalogAdapter extends TypeAdapter<Catalog> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is CatalogAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      identical(this, other) || other is CatalogAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }

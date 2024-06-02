@@ -18,6 +18,7 @@ Future<void> main() async {
   await WindowInitializer.initialize();
   await Preferences.ensureInitialized();
   await HiveInitializer.ensureInitialized();
+
   runApp(
     MultiProvider(
       providers: [

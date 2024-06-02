@@ -46,7 +46,7 @@ class _PatientPageState extends State<Patients> {
               return _Tile(
                 onTap: () {
                   setState(() => patient = p);
-                  context.go(RoutePath.patientview.path, extra: p.uid);
+                  context.go(Paths.patientview.path, extra: p.uid);
                 },
                 selected: patient == p,
                 colors: colors,

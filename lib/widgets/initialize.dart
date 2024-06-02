@@ -166,7 +166,7 @@ class _TestTileState extends State<_TestTile> {
       onExit: (_) => setState(() => hovering = false),
       child: ListTile(
         onTap: widget.onTap,
-        leading: Text(widget.test.id),
+        leading: ConstrainedBox(constraints: const BoxConstraints.tightFor(width: 40), child: Text(widget.test.id)),
         title: Text(widget.test.label),
         leadingAndTrailingTextStyle: style,
         titleTextStyle: style,
